@@ -12,7 +12,7 @@ export interface ImageViewerProps {
   }[];
   onRequestPrevious: () => void;
   onRequestNext: () => void;
-  onClose: () => void;
+  onRequestClose: () => void;
 }
 
 export function ImageViewer(props: ImageViewerProps) {
@@ -36,7 +36,7 @@ export function ImageViewer(props: ImageViewerProps) {
     const handleKeyPress = (event: KeyboardEvent) => {
       if (event.key === "ArrowLeft") props.onRequestPrevious();
       if (event.key === "ArrowRight") props.onRequestNext();
-      if (event.key === "Escape") props.onClose();
+      if (event.key === "Escape") props.onRequestClose();
     };
   
     document.addEventListener("keyup", handleKeyPress);
@@ -45,7 +45,7 @@ export function ImageViewer(props: ImageViewerProps) {
       allowScroll();
       document.removeEventListener("keyup", handleKeyPress);
     };
-  }, [isOpen, props.onRequestPrevious, props.onRequestNext, props.onClose])
+  }, [isOpen, props.onRequestPrevious, props.onRequestNext, props.onRequestClose])
   
 
   return (
@@ -57,10 +57,9 @@ export function ImageViewer(props: ImageViewerProps) {
     >
       <div
         className="absolute top-0 left-0 w-screen h-screen bg-black/50 backdrop-blur-sm"
-        onClick={props.onClose}
+        onClick={props.onRequestClose}
       />
       
-      {/* Content with solid black background, no blur */}
       <div className="flex flex-col items-center justify-start gap-2 w-full h-full z-20 bg-black p-4 relative">
         <p>{props.currentIndex + 1}/{props.images.length}</p> 
         <div className="w-full h-full flex-1 flex items-center justify-center gap-4 overflow-hidden">

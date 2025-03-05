@@ -47,7 +47,7 @@ export function GallerySection() {
         images={images}
         onRequestPrevious={previousImage}
         onRequestNext={nextImage}
-        onClose={() => setCurrentIndex(-1)}
+        onRequestClose={() => setCurrentIndex(-1)}
       />
     </section>
   )
