@@ -1,8 +1,8 @@
 'use client'
 
-import useScrollBlock from '@/hooks/useScrollBlock';
+import {  useEffect, useState } from 'react';
 import { clsx } from 'clsx'
-import { useCallback, useEffect, useRef, useState } from 'react';
+import useScrollBlock from '@/hooks/useScrollBlock';
 
 export interface ImageViewerProps {
   currentIndex: number;
