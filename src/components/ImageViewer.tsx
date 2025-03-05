@@ -64,7 +64,7 @@ export function ImageViewer(props: ImageViewerProps) {
         <p>{props.currentIndex + 1}/{props.images.length}</p> 
         <div className="w-full h-full flex-1 flex items-center justify-center gap-4 overflow-hidden">
           <button onClick={props.onRequestPrevious}>Prev</button>
-          <div className="w-full flex-grow flex items-center justify-center overflow-hidden">
+          <div className="w-full h-full flex-grow flex items-center justify-center overflow-hidden">
             <img
               src={props.images[props.currentIndex]?.full ?? null}
               className="max-h-full max-w-full object-contain"
