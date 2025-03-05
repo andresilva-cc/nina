@@ -57,7 +57,7 @@ export function ImageViewer(props: ImageViewerProps) {
     <div
       className={clsx(
         { hidden: props.currentIndex === -1 },
-        'fixed z-10 top-0 left-0 w-screen h-screen p-16'
+        'fixed z-10 top-0 left-0 w-screen h-screen sm:p-4 md:p-8 lg:p-16'
       )}
     >
       <div
@@ -66,19 +66,19 @@ export function ImageViewer(props: ImageViewerProps) {
       />
       
       <div
-        className="flex flex-col items-center justify-start gap-2 w-full h-full z-20 bg-black p-4 relative"
+        className="flex flex-col items-center justify-start gap-2 w-full h-full z-20 bg-black py-4 md:px-4 relative"
         {...swipeHandlers}
       >
         <p>{props.currentIndex + 1}/{props.images.length}</p> 
         <div className="w-full h-full flex-1 flex items-center justify-center gap-4 overflow-hidden">
-          <button onClick={props.onRequestPrevious}>Prev</button>
+          <button className="hidden sm:block" onClick={props.onRequestPrevious}>Prev</button>
           <div className="w-full h-full flex-grow flex items-center justify-center overflow-hidden">
             <img
               src={props.images[props.currentIndex]?.full ?? null}
               className="max-h-full max-w-full object-contain"
             />
           </div>
-          <button onClick={props.onRequestNext}>Next</button>
+          <button className="hidden sm:block" onClick={props.onRequestNext}>Next</button>
         </div>
       </div>
     </div>
