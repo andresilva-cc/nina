@@ -32,6 +32,7 @@ export function GallerySection() {
 
   return (
     <section>
+      <h2 className="font-title text-2xl mb-4 text-red-500">GALLERY</h2>
       <ul className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 lg:grid-cols-6 2xl:grid-cols-8 gap-4">
         { images.map((image, index) => (
           <li
