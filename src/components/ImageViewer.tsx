@@ -3,6 +3,7 @@
 import {  useEffect, useState } from 'react';
 import { clsx } from 'clsx'
 import { useSwipeable } from 'react-swipeable';
+import { CaretLeft, CaretRight } from '@phosphor-icons/react'
 import useScrollBlock from '@/hooks/useScrollBlock';
 
 export interface ImageViewerProps {
@@ -69,16 +70,29 @@ export function ImageViewer(props: ImageViewerProps) {
         className="flex flex-col items-center justify-start gap-2 w-full h-full z-20 bg-black py-4 md:px-4 relative"
         {...swipeHandlers}
       >
-        <p>{props.currentIndex + 1}/{props.images.length}</p> 
+        <p>{props.currentIndex + 1}/{props.images.length}</p>
+
         <div className="w-full h-full flex-1 flex items-center justify-center gap-4 overflow-hidden">
-          <button className="hidden sm:block" onClick={props.onRequestPrevious}>Prev</button>
+          <button
+            className="hidden sm:block rounded-full p-1 hover:bg-white/15"
+            onClick={props.onRequestPrevious}
+          >
+            <CaretLeft size={32} weight="bold" />
+          </button>
+
           <div className="w-full h-full flex-grow flex items-center justify-center overflow-hidden">
             <img
               src={props.images[props.currentIndex]?.full ?? null}
               className="max-h-full max-w-full object-contain"
             />
           </div>
-          <button className="hidden sm:block" onClick={props.onRequestNext}>Next</button>
+
+          <button
+            className="hidden sm:block rounded-full p-1 hover:bg-white/15 active:bg-white/25 transition-colors"
+            onClick={props.onRequestNext}
+          >
+            <CaretRight size={32} weight="bold" />
+          </button>
         </div>
       </div>
     </div>
