@@ -1,11 +1,10 @@
 @import "tailwindcss";
 
 @theme {
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --font-title: var(--playwrite-font);
+  --font-body: var(--quicksand-font);
 }
 
 body {
-  @apply bg-gray-950 text-gray-50;
-  font-family: Arial, Helvetica, sans-serif;
+  @apply bg-gray-950 text-gray-50 font-body;
 }
