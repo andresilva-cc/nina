@@ -16,9 +16,7 @@ export default function Home() {
   }
 
   function previousImage() {
-    console.log('previousImage', currentIndex)
     if (currentIndex === 0) {
-      console.log('reached 0')
       return;
     }
     
@@ -26,9 +24,7 @@ export default function Home() {
   }
   
   function nextImage() {
-    console.log('nextImage', currentIndex)
     if (currentIndex === images.length - 1) {
-      console.log('reached max')
       return;
     }
 
