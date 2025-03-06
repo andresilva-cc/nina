@@ -67,7 +67,7 @@ export function ImageViewer(props: ImageViewerProps) {
       />
       
       <div
-        className="flex flex-col items-center justify-start gap-2 w-full h-full z-20 bg-gray-950 py-4 md:px-4 relative"
+        className="flex flex-col items-center justify-start gap-2 w-full h-full z-20 bg-gray-950 border border-gray-900 py-4 md:px-4 relative rounded-2xl"
         {...swipeHandlers}
       >
         <p>{props.currentIndex + 1}/{props.images.length}</p>
