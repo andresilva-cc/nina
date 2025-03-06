@@ -1,7 +1,8 @@
 'use client'
 
-import { ImageViewer } from '@/components/ImageViewer'
 import { useState } from 'react'
+import { ImageViewer } from './ImageViewer'
+import { Text } from './Text'
 
 export function GallerySection() {
   const [currentIndex, setCurrentIndex] = useState(-1)
@@ -32,7 +33,7 @@ export function GallerySection() {
 
   return (
     <section>
-      <h2 className="font-title text-2xl mb-4 text-red-500">GALLERY</h2>
+      <Text variant="h2" className="mb-4 text-amber-500">Gallery</Text>
       <ul className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 2xl:grid-cols-8 gap-4">
         { images.map((image, index) => (
           <li

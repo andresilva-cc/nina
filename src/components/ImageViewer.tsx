@@ -5,6 +5,7 @@ import { clsx } from 'clsx'
 import { useSwipeable } from 'react-swipeable';
 import { CaretLeft, CaretRight, X } from '@phosphor-icons/react'
 import useScrollBlock from '@/hooks/useScrollBlock';
+import { Text } from './Text'
 
 export interface ImageViewerProps {
   currentIndex: number;
@@ -70,7 +71,7 @@ export function ImageViewer(props: ImageViewerProps) {
         className="flex flex-col items-center justify-start gap-2 w-full h-full z-20 bg-gray-950 border border-gray-900 pt-4 md:px-4 relative rounded-2xl"
         {...swipeHandlers}
       >
-        <p>{props.currentIndex + 1}/{props.images.length}</p>
+        <Text>{props.currentIndex + 1}/{props.images.length}</Text>
 
         <button
           className="absolute top-0 right-0 m-3 rounded-full p-1 hover:bg-gray-900 active:bg-gray-800 transition-colors cursor-pointer"
