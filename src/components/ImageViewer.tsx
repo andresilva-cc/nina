@@ -60,7 +60,7 @@ export function ImageViewer(props: ImageViewerProps) {
     <div
       className={clsx(
         { hidden: props.currentIndex === -1 },
-        'fixed z-10 top-0 left-0 w-screen h-screen sm:p-4 md:p-8 lg:p-16'
+        'fixed top-0 left-0 w-screen h-screen sm:p-4 md:p-8 lg:p-16'
       )}
     >
       <div
@@ -69,7 +69,7 @@ export function ImageViewer(props: ImageViewerProps) {
       />
       
       <div
-        className="flex flex-col items-center justify-start gap-2 w-full h-full z-20 bg-gray-950 border border-gray-900 pt-4 md:px-4 relative rounded-2xl"
+        className="relative flex flex-col gap-2 w-full h-full pt-4 md:px-4 rounded-2xl bg-gray-950 border border-gray-900"
         {...swipeHandlers}
       >
         <Text>{props.currentIndex + 1}/{props.images.length}</Text>
@@ -81,7 +81,7 @@ export function ImageViewer(props: ImageViewerProps) {
           <X size={24} weight="bold" />
         </button>
 
-        <div className="w-full h-full flex-1 flex items-center justify-center gap-4 overflow-hidden">
+        <div className="w-full h-full flex items-center gap-4 overflow-hidden">
           <button
             className="hidden sm:block rounded-full p-1 hover:bg-gray-900 active:bg-gray-800 transition-colors cursor-pointer"
             onClick={props.onRequestPrevious}
@@ -89,10 +89,10 @@ export function ImageViewer(props: ImageViewerProps) {
             <CaretLeft size={32} weight="bold" />
           </button>
 
-          <div className="w-full h-full flex-grow flex items-center justify-center overflow-hidden">
+          <div className="w-full h-full flex justify-center">
             <img
               src={props.images[props.currentIndex]?.full ?? null}
-              className="max-h-full max-w-full object-contain"
+              className="object-contain"
             />
           </div>
 
