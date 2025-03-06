@@ -53,6 +53,7 @@ export function ImageViewer(props: ImageViewerProps) {
   const swipeHandlers = useSwipeable({
     onSwipedLeft: () => props.onRequestNext(),
     onSwipedRight: () => props.onRequestPrevious(),
+    onSwipedDown: () => props.onRequestClose(),
   })
 
   return (
