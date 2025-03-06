@@ -38,7 +38,7 @@ export function GallerySection() {
         { images.map((image, index) => (
           <li
             key={index}
-            className="aspect-square bg-center bg-no-repeat bg-cover cursor-pointer"
+            className="aspect-square bg-center bg-no-repeat bg-cover hover:opacity-80 active:opacity-60 transition-opacity cursor-pointer"
             style={{ backgroundImage: `url('${image.thumbnail}')` }}
             onClick={() => setCurrentIndex(index)} />
         ))}
