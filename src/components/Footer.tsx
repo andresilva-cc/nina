@@ -8,7 +8,7 @@ export function Footer() {
         Developed by <a
           href="https://andresilva.cc/"
           target="_blank"
-          className="underline text-amber-500"
+          className="underline text-amber-500 hover:opacity-80 active:opacity-60 transition-opacity"
         >
           André Silva
         </a>
