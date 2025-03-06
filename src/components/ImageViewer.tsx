@@ -73,7 +73,7 @@ export function ImageViewer(props: ImageViewerProps) {
         <p>{props.currentIndex + 1}/{props.images.length}</p>
 
         <button
-          className="absolute top-0 right-0 m-4 rounded-full p-1 hover:bg-gray-900 active:bg-gray-800 transition-colors"
+          className="absolute top-0 right-0 m-4 rounded-full p-1 hover:bg-gray-900 active:bg-gray-800 transition-colors cursor-pointer"
           onClick={props.onRequestClose}
         >
           <X size={24} weight="bold" />
@@ -81,7 +81,7 @@ export function ImageViewer(props: ImageViewerProps) {
 
         <div className="w-full h-full flex-1 flex items-center justify-center gap-4 overflow-hidden">
           <button
-            className="hidden sm:block rounded-full p-1 hover:bg-gray-900 active:bg-gray-800 transition-colors"
+            className="hidden sm:block rounded-full p-1 hover:bg-gray-900 active:bg-gray-800 transition-colors cursor-pointer"
             onClick={props.onRequestPrevious}
           >
             <CaretLeft size={32} weight="bold" />
@@ -95,7 +95,7 @@ export function ImageViewer(props: ImageViewerProps) {
           </div>
 
           <button
-            className="hidden sm:block rounded-full p-1 hover:bg-gray-900 active:bg-gray-800 transition-colors"
+            className="hidden sm:block rounded-full p-1 hover:bg-gray-900 active:bg-gray-800 transition-colors cursor-pointer"
             onClick={props.onRequestNext}
           >
             <CaretRight size={32} weight="bold" />
