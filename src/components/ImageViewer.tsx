@@ -1,9 +1,9 @@
 'use client'
 
-import {  useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { clsx } from 'clsx'
 import { useSwipeable } from 'react-swipeable';
-import { CaretLeft, CaretRight } from '@phosphor-icons/react'
+import { CaretLeft, CaretRight, X } from '@phosphor-icons/react'
 import useScrollBlock from '@/hooks/useScrollBlock';
 
 export interface ImageViewerProps {
@@ -71,6 +71,13 @@ export function ImageViewer(props: ImageViewerProps) {
         {...swipeHandlers}
       >
         <p>{props.currentIndex + 1}/{props.images.length}</p>
+
+        <button
+          className="absolute top-0 right-0 m-4 rounded-full p-1 hover:bg-gray-900 active:bg-gray-800 transition-colors"
+          onClick={props.onRequestClose}
+        >
+          <X size={24} weight="bold" />
+        </button>
 
         <div className="w-full h-full flex-1 flex items-center justify-center gap-4 overflow-hidden">
           <button
