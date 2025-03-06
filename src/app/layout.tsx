@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { playwriteFont, quicksandFont } from '@/app/fonts';
+import { Footer } from "@/components/Footer";
 import "./globals.css";
 
 export const metadata: Metadata = {
@@ -15,9 +16,10 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${playwriteFont.variable} ${quicksandFont.variable} antialiased`}
+        className={`${playwriteFont.variable} ${quicksandFont.variable} antialiased px-4 pt-8 sm:p-8 md:p-12 lg:p-16 xl:px-24 pb-8!`}
       >
         {children}
+        <Footer />
       </body>
     </html>
   );
