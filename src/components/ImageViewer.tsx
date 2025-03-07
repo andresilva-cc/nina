@@ -18,18 +18,18 @@ export interface ImageViewerProps {
   onRequestClose: () => void;
 }
 
-export function ImageViewer(props: ImageViewerProps) {
+export function ImageViewer({currentIndex, images, onRequestPrevious, onRequestNext, onRequestClose}: ImageViewerProps) {
   const [blockScroll, allowScroll] = useScrollBlock()
   const [isOpen, setIsOpen] = useState(false)
 
   useEffect(() => {
-    if (props.currentIndex !== -1) {
+    if (currentIndex !== -1) {
       setIsOpen(true);
       return
     }
     
     setIsOpen(false);
-  }, [props.currentIndex]);
+  }, [currentIndex]);
   
   useEffect(() => {
     if (!isOpen) return;
@@ -37,9 +37,9 @@ export function ImageViewer(props: ImageViewerProps) {
     blockScroll();
   
     const handleKeyPress = (event: KeyboardEvent) => {
-      if (event.key === "ArrowLeft") props.onRequestPrevious();
-      if (event.key === "ArrowRight") props.onRequestNext();
-      if (event.key === "Escape") props.onRequestClose();
+      if (event.key === "ArrowLeft") onRequestPrevious();
+      if (event.key === "ArrowRight") onRequestNext();
+      if (event.key === "Escape") onRequestClose();
     };
   
     document.addEventListener("keyup", handleKeyPress);
@@ -48,35 +48,35 @@ export function ImageViewer(props: ImageViewerProps) {
       allowScroll();
       document.removeEventListener("keyup", handleKeyPress);
     };
-  }, [isOpen, props.onRequestPrevious, props.onRequestNext, props.onRequestClose])
+  }, [isOpen, onRequestPrevious, onRequestNext, onRequestClose, allowScroll, blockScroll])
   
   const swipeHandlers = useSwipeable({
-    onSwipedLeft: () => props.onRequestNext(),
-    onSwipedRight: () => props.onRequestPrevious(),
-    onSwipedDown: () => props.onRequestClose(),
+    onSwipedLeft: () => onRequestNext(),
+    onSwipedRight: () => onRequestPrevious(),
+    onSwipedDown: () => onRequestClose(),
   })
 
   return (
     <div
       className={clsx(
-        { hidden: props.currentIndex === -1 },
+        { hidden: currentIndex === -1 },
         'fixed top-0 left-0 w-screen h-screen sm:p-4 md:p-8 lg:p-16'
       )}
     >
       <div
         className="absolute top-0 left-0 w-screen h-screen bg-gray-950/50 backdrop-blur-sm"
-        onClick={props.onRequestClose}
+        onClick={onRequestClose}
       />
       
       <div
         className="relative flex flex-col gap-4 w-full h-full pt-4 md:px-4 rounded-2xl bg-gray-950 border border-gray-800"
         {...swipeHandlers}
       >
-        <Text>{props.currentIndex + 1}/{props.images.length}</Text>
+        <Text>{currentIndex + 1}/{images.length}</Text>
 
         <button
           className="absolute top-0 right-0 m-3 rounded-full p-1 hover:bg-gray-900 active:bg-gray-800 transition-colors cursor-pointer"
-          onClick={props.onRequestClose}
+          onClick={onRequestClose}
         >
           <X size={24} weight="bold" />
         </button>
@@ -84,21 +84,22 @@ export function ImageViewer(props: ImageViewerProps) {
         <div className="w-full h-full flex items-center gap-4 overflow-hidden">
           <button
             className="hidden sm:block rounded-full p-1 hover:bg-gray-900 active:bg-gray-800 transition-colors cursor-pointer"
-            onClick={props.onRequestPrevious}
+            onClick={onRequestPrevious}
           >
             <CaretLeft size={32} weight="bold" />
           </button>
 
           <div className="w-full h-full flex justify-center">
             <img
-              src={props.images[props.currentIndex]?.full ?? null}
+              src={images[currentIndex]?.full ?? null}
+              alt="Foto da Nina"
               className="object-contain"
             />
           </div>
 
           <button
             className="hidden sm:block rounded-full p-1 hover:bg-gray-900 active:bg-gray-800 transition-colors cursor-pointer"
-            onClick={props.onRequestNext}
+            onClick={onRequestNext}
           >
             <CaretRight size={32} weight="bold" />
           </button>
