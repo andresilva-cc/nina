@@ -82,7 +82,7 @@ export function ImageViewer({
       />
 
       <div
-        className="relative flex flex-col gap-4 w-full h-full pt-4 md:px-4 rounded-2xl bg-gray-950 border border-gray-800"
+        className="relative flex flex-col gap-4 w-full h-full pt-4 md:px-4 rounded-2xl bg-gray-950 sm:border sm:border-gray-800"
         {...swipeHandlers}
       >
         <Text>
