@@ -21,20 +21,22 @@ const variants = {
 };
 
 interface TextProps {
-  variant?: keyof typeof variants
-  element?: keyof JSX.IntrinsicElements
-  children: ReactNode
-  className?: string
+  variant?: keyof typeof variants;
+  element?: keyof JSX.IntrinsicElements;
+  children: ReactNode;
+  className?: string;
 }
 
 export function Text({
-  variant = 'body', element, children, className,
+  variant = 'body',
+  element,
+  children,
+  className,
 }: TextProps) {
-  const Tag = (element || variants[variant].element) as keyof JSX.IntrinsicElements;
+  const Tag = (element ||
+    variants[variant].element) as keyof JSX.IntrinsicElements;
 
   return (
-    <Tag className={clsx(variants[variant].classes, className)}>
-      { children }
-    </Tag>
+    <Tag className={clsx(variants[variant].classes, className)}>{children}</Tag>
   );
 }
